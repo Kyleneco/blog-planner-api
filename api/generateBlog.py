@@ -1,14 +1,23 @@
-from flask import Flask, request, jsonify
-app = Flask(__name__)
+# api/generateBlog.py
+import json
 
-@app.route('/generateBlog', methods=['POST'])
-def generate_blog():
-    kw = request.json.get('keyword', '')
-    return jsonify({
-        "title": f"{kw} を極めるバイオハック入門",
-        "outline": "- 導入\n- 問題提起\n- 解決策\n- まとめ"
-    })
+def handler(request):
+    """
+    Vercel Python Serverless Function
+    POST /api/generateBlog
+    """
+    data = request.json() or {}
+    kw = data.get("keyword", "")
 
-if __name__ == '__main__':
-    app.run()
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({
+            "title": f"{kw} を極めるバイオハック入門",
+            "outline": "- 導入\n- 問題提起\n- 解決策\n- まとめ"
+        })
+    }
+
+
+
 
