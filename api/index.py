@@ -1,12 +1,13 @@
-# api/generateBlog.py
 import json
+from typing import Dict, Any
 
-def handler(request):
-    """
-    Vercel Python Serverless Function
-    POST /api/generateBlog
-    """
-    data = request.json() or {}
+def main(request) -> Dict[str, Any]:
+    """POST /api/index  { "keyword": "マインドフルネス バイオハック" }"""
+    try:
+        data = json.loads(request.body or b"{}")
+    except Exception:
+        data = {}
+
     kw = data.get("keyword", "")
 
     return {
@@ -17,7 +18,4 @@ def handler(request):
             "outline": "- 導入\n- 問題提起\n- 解決策\n- まとめ"
         })
     }
-
-
-
 
