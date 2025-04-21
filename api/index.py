@@ -1,10 +1,6 @@
-import json
-
 def handler(request):
-    """
-    POST /api/index
-    Body: {"keyword": "マインドフルネス バイオハック"}
-    """
+    import json  
+
     try:
         data = json.loads(request.body or b"{}")
     except Exception:
