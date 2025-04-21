@@ -1,6 +1,6 @@
 import json
 
-def main(request):
+def handler(request):
     """
     POST /api/index
     Body: {"keyword": "マインドフルネス バイオハック"}
