@@ -1,8 +1,10 @@
 import json
-from typing import Dict, Any
 
-def main(request) -> Dict[str, Any]:
-    """POST /api/index  { "keyword": "マインドフルネス バイオハック" }"""
+def main(request):
+    """
+    POST /api/index
+    Body: {"keyword": "マインドフルネス バイオハック"}
+    """
     try:
         data = json.loads(request.body or b"{}")
     except Exception:
